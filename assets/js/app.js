@@ -26,7 +26,12 @@
     console.log(currencyList);
 
     elementsContainer.innerHTML = currencyList.map(item => {
-        let flags = item.countries.map(country => `<img src="${country.flags.png}" alt="" class="border me-3 position-relative" style="width: 60px" onMouseOver="showTooltip()">`).join('');
+        let flags = item.countries.map(country => `
+        <div class="me-3 d-inline-block position-relative">
+            <img src="${country.flags.png}" alt="" class="border" style="width: 60px">
+            <span class="tooltiptext">${country.name.common}</span>
+        </div>
+        `).join('');
         return `
         <div class="row row-col-3 align-items-center mb-3 p-2 border border-dark">
             <div class="col">${item.txt} (${item.cc})</div>
@@ -34,12 +39,6 @@
             <div class="col-8">${flags}</div>
         </div>`
     }).join('');
-    
-    document.querySelectorAll('img');
-    function showTooltip(img){
-        
-        img.innerHTML = test;
-    }
     
 
 
